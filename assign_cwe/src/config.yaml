@@ -1,0 +1,68 @@
+# Model settings
+#llm_config:
+#  llm_type: "anthropic"  # "anthropic", "gemini", or "openai"
+#  #api_key: "${ANTHROPIC_API_KEY}"  # Environment variable reference
+#  api_key: ""  # Environment variable reference
+#  model: "claude-3-haiku-20240307"  # For Anthropic
+#  temperature: 0.9
+#  max_tokens: 2048
+
+# Alternative LLM configurations - uncomment to use
+# Gemini configuration
+llm_config:
+   llm_type: "gemini"
+   api_key: ""
+   model: "gemini-2.0-flash" # "gemini-pro"
+   temperature: 0.9
+   max_tokens: 2048
+
+# OpenAI configuration
+# llm_config:
+#   llm_type: "openai"
+#   api_key: "${OPENAI_API_KEY}"
+#   model: "gpt-4"
+#   temperature: 0.9
+#   max_tokens: 2048
+
+# Embedding configuration
+embedding_config:
+  provider: "openai"
+  model: "text-embedding-3-small"
+  batch_size: 100
+
+# Retriever settings
+retriever_weights:
+  dense: 0.35
+  sparse: 0.4
+  graph: 0.25
+
+# Database settings
+#cwe_database_path: "data_in/cwe_trimmed.json"
+cwe_database_path: "data_in/cwe_with_examples_all.json"
+
+# Cache settings
+cache_dir: "./cache"
+max_cache_size: 1000
+
+# Neo4j storage directory
+neo4j_storage_dir: "./data/neo4j/property_graph"
+data_dir: "./data/neo4j/data"
+
+# Agent settings
+agent_config:
+  max_input_length: 100000  # Maximum character length for agent inputs
+  context_limit: 5          # Number of previous interactions to maintain
+
+# Maximum iterations for feedback loop
+max_iterations: 3
+
+# Data Sources
+data_sources:
+  cwe_similarity_path: '../cve_dedup/data_out/CVE_similarity/cve_similarity.csv.gz'
+  cve_info_path: '../cve_info'  # Base directory for CVE JSON files
+  cve_refs_path: '../cve_info_refs'  # Base directory for reference content
+
+# Processor settings
+processor_config:
+  save_intermediate_files: true
+  rate_limit_delay: 1.0
